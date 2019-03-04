@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Profil{% endblock %}
+
+
+{% block body %}
+    {%  for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+        <div class="container">
+
+            <h2 class="crTitle mt-5 mr-2 " style="display: inline-block;">Informations personnelles</h2>  <a href="{{ path('profile.edit', {id: user.id}) }}" class="btn rdcBtn mr-2">Editer</a>
+            <hr>
+
+            <div class="row">
+                <div class="col-lg-4">img</div>
+                <div class="2">
+                    <h4 class="crTitle">{{ user.name }} {{ user.firstName }}</h4>
+                    <p>Pseudo:    {{ user.pseudo }}</p>
+                    <p>Email:   {{  user.email }}</p>
+                    <p>Téléphone: {{ user.phone }}</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+{% endblock %}

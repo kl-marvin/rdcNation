@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block title %} Compte rendu {% endblock %}
+
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4 crTitle">Compte rendu du {{ cr.date|date('d-m-Y') }} </h1>
+            <p class="lead ml-2">par {{ cr.author }}</p>
+            <hr class="my-4">
+
+
+            <!-- Post Content -->
+            <div class="container">
+                <p>{{ cr.content|raw }}</p>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Comments Form -->
+    <div class="container">
+        <div class="card my-4" id="cardElt">
+            <h5 class="card-header card-title">Laisser un commentaire </h5>
+            <div class="card-body">
+                {{ form_start(form) }}
+                {{ form_row(form.content, {'attr' : {'id' : 'commentContent'}})  }}
+                <button type="submit" class="btn rdcBtn">Poster</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        <!--  Comments -->
+        {% for listOfComments in listOfComments %}
+            <div class="media mb-4">
+                <div class="media-body">
+                    <div class="mt-0"><span class="crTitle" style="font-size: 18px;">{{ listOfComments.author }} </span><span
+                                style="font-size: 14px;"> le {{ listOfComments.date|date('d-m-Y') }}</span></div>
+                    <p>{% if listOfComments.statut == 0 %}
+                    <div>{{ listOfComments.content }}</div>
+
+                    {% elseif listOfComments.statut == 1 %}
+
+
+                        <div class="moderate"><img src="{{ asset('img/no-entry.svg') }}" width="10"><span class="ml-1">Ce commentaire a
+                                été modéré par l'administrateur.</span>
+                        </div></p>
+                    {% endif %}
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+
+    </div>
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{%  block title 'RDC Admin - Connexion' %}
+
+{% block body %}
+        <div class="jumbotron">
+            <div class="">
+                <h1 class="display-4 CRtitle">Bienvenue sur l'espace d'administration</h1>
+                <hr class="my-4">
+                <p class="lead mt-3 ">Ici vous pourez gérer les compte rendus et leurs commentaires et ajouter les événements de distributions.</p>
+
+            </div>
+        </div>
+
+            <div class="" style="min-height: 450px;">
+                            <div class="row">
+                                <div class="offset-lg-4 text-center mr-2 "><a href="{{ path('admin.cr.create') }}" class="btn rdcBtn btnAdmin">Créer un compte rendu</a></div>
+                                <div class="text-center "> <a href="{{ path('admin.event.create') }}" class="btn rdcBtn btnAdmin">Créer une distribution</a></div>
+                            </div>
+
+            </div>
+
+{% endblock %}

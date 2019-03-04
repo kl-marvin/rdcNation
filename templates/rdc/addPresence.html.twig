@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Inscription {% endblock %}
+
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="crTitle">Inscription à la distribution</h4>
+            </div>
+            <div class="col-lg-12">
+                <p> Afin de pouvoir assurer l'organisation de la distribution, merci de vous inscrire de manière définitive après le mercredi.</p>
+            </div>
+
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class=" offset-lg-2 col-lg-10">
+                        {{ form_row(form.response) }}
+                    </div>
+                    <div class="offset-lg-2 col-lg-10">
+                        {{ form_row(form.guest) }}
+                        <input type="submit" class="rdcBtn btn" value="OK">
+                        {{ form_end(form) }}
+                    </div>
+            </div>
+
+    </div>
+    </div>
+
+
+
+{% endblock %}
+

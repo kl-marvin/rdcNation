@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Distribution{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="card cardRDC">
+            <div class="card-header card-title">
+                <div class="text-center">
+                    <h5>Distribution du Vendredi {{ lastDistribution.date|date('d/m/Y') }}</h5>
+                </div>
+            </div>
+            <div class="body">
+                <div class="text-center mt-2"><strong>Responsable(s) présent(es) cette semaine :</strong></div>
+                <div class="text-center">{{ lastDistribution.manager }}</div>
+                <div class="text-center mt-3">{{ lastDistribution.message }}</div>
+                <hr width="50%">
+                {% set nbpresence = 0 %}
+                {% set nbguest = 0 %}
+                {% for presence in lastDistribution.presences if presence.response == true %}
+                    {% set nbpresence = nbpresence + 1 %}
+                    {% set nbguest = nbguest + presence.guest %}
+                {% endfor %}
+                <div class="text-center"><strong>Bénévoles Présents :</strong></div>
+                <div class="text-center mb-2">{{ nbpresence }} + {{ nbguest }} invités</div>
+
+                <div class="text-center"><strong>Bénévoles ayant répondu: </strong></div>
+                <div class="text-center"> {{ lastDistribution.presences|length }}</div>
+
+                <div class="card-block mb-5">
+                    <div class="row no-gutters">
+                        <div class="offset-lg-1 col-lg-5">
+                            <h3 class="text-center ">Je serais là !</h3>
+                            {% for presence in lastDistribution.presences %}
+                                {% if presence.response == true %}
+                                        <span class="response mr-1 mt-1">
+                                            {{ presence.user.firstname }} {{ presence.user.name|slice(0, 1) }}. {{ presence.guest? "+ " ~ presence.guest : ""}} |
+                                        </span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-lg-5"><h3 class="text-center">J'ai poney...</h3>
+                            {% for presence in lastDistribution.presences %}
+                                {% if  presence.response == false %}
+                                    <span class="response offset-lg-1 mt-1">{{ presence.user.firstname }} {{ presence.user.name|striptags|slice(0, 1) }}.</span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                         {% if user.hasAnsweredToEvent(lastDistribution) %}
+                         <a  class="btn rdcBtn" href="{{ path('distribution.add_presence', {id: lastDistribution.id}) }}">Modifier ma présence</a>
+                        {% else %}
+                        <a  class="btn rdcBtn" href="{{ path('distribution.add_presence', {id: lastDistribution.id}) }}">M'inscrire !</a>
+                        {% endif %}
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            {% for event in last4 %}
+
+                {% set nbpresence = 0 %}
+                {% set nbguest = 0 %}
+                {% for presence in event.presences if presence.response == true %}
+                    {% set nbpresence = nbpresence + 1 %}
+                    {% set nbguest = nbguest + presence.guest %}
+                {% endfor %}
+
+                <div class="col-lg-6 mt-5 mb-3">
+                    <div class="card cardRDC">
+                        <div class="card-header card-title">
+                            <div class="text-center"><h5>Distribution du Vendredi {{ event.date|date('d/m/Y') }}</h5>
+                            </div>
+                        </div>
+                        <div class="body p-3">
+                            <div class="text-center mt-2"><strong>Responsable(s) présent(es) cette semaine :</strong>
+                            </div>
+                            <div class="text-center">{{ event.manager }}</div>
+                            <div class="text-center mt-3">{{ event.message }}</div>
+                            <hr width="50%">
+
+                            <div class="text-center"><strong>Bénévoles Présents :</strong></div>
+                            <div class="text-center mb-2 ">
+                                {{ nbpresence }} + {{ nbguest }} invité(s)
+                            </div>
+
+                            <div class="text-center"><strong>Bénévoles ayant répondu:</strong></div>
+                            <div class="text-center">
+                                {{ event.presences|length }}
+                            </div>
+
+                            <div class="card-block mb-5">
+                                <div class="row no-gutters">
+                                    <div class="offset-lg-1 col-lg-5">
+                                        <h3 class="text-center">Je serais là !</h3>
+                                        {% for presence in event.presences %}
+                                            {% if presence.response == true %}
+                                                <span class="response mr-1 mt-1">
+                                            {{ presence.user.firstname }} {{ presence.user.name|slice(0, 1) }}. {{ presence.guest? "+ " ~ presence.guest : ""}} |
+                                             </span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col-lg-5"><h3 class="text-center">J'ai poney...</h3>
+                                    {% for presence in event.presences %}
+                                        {% if presence.response == false  %}
+                                            <span class="response offset-lg-1 mt-1">
+                                            {{ presence.user.firstname }} {{ presence.user.name|slice(0, 1) }}.|
+                                        </span>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="text-center mt-5">
+                                    {% if user.hasAnsweredToEvent(event) %}
+                                        <a  class="btn rdcBtn" href="{{ path('distribution.add_presence', {id: event.id}) }}">Modifier ma présence</a>
+                                    {% else %}
+                                        <a  class="btn rdcBtn" href="{{ path('distribution.add_presence', {id: event.id}) }}">M'inscrire !</a>
+                                    {% endif %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <script>
+        {#console.log('test');#}
+        {#var modal = document.querySelector(".modal");#}
+        {#var trigger = document.querySelector(".trigger");#}
+        {#var closeButton = document.querySelector(".close-button");#}
+
+        {#function toggleModal() {#}
+            {#modal.classList.toggle("show-modal");#}
+        {#}#}
+
+        {#function windowOnClick(event) {#}
+            {#if (event.target === modal) {#}
+                {#console.log('test');#}
+                {#toggleModal();#}
+            {#}#}
+        {#}#}
+
+        {#trigger.addEventListener("click", toggleModal);#}
+        {#closeButton.addEventListener("click", toggleModal);#}
+        {#window.addEventListener("click", windowOnClick);#}
+
+    </script>
+
+{% endblock %}
+
+
+

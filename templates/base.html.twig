@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Rdc Nation{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../public/css/base.css"> -->
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="{{ path('homepage') }}">
+                    <img src="{{ asset('img/engagements.png') }}" width="42" height="42" class="d-inline-block align-top"
+                         alt="">
+                    <span class="navRdc"> RDC </span><span> Nation Vendredi </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link link" href="{{ path('distribution.index') }}"><img src="{{ asset('img/event.svg') }}" width="30"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link" href="{{ path('compteRendu.index') }}"><img src="{{ asset('img/cr.svg') }}" width="30"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link" href="{{ path('infos') }}"><img src="{{ asset('img/info.svg') }}" width="30"></a>
+                        </li>
+                        {% if(is_granted('ROLE_ADMIN')) %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('admin.index') }}"> <img src="{{ asset('img/admin.svg') }}" width="30"></a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+
+
+                    {% if (is_granted('IS_AUTHENTICATED_REMEMBERED')) %}
+
+                    <a  href="{{ path('profile.edit', {id: user.id}) }}" ><img src="{{ asset('img/user.svg') }}" width="35 " class="mr-1"></a>
+                        <a href="{{ path('app_logout') }}" class="btn rdcBtn">Se Déconnecter</a>
+
+
+                    {% else %}
+                        <button type="button" class="btn rdcBtn " data-toggle="modal" data-target="#exampleModal">Se Connecter
+                        </button>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+
+
+        <!-- Modal -->
+        <div class="modal fade modalRDC" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modalWindowRdc">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title styleForm" id="exampleModalLabel">Connexion à l'Espace Bénévole</h5><br>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center mb-2"><img src="{{ asset('img/engagements.png') }}" width="110" height="110" class="d-inline-block align-top" alt=""></div>
+                        <p>Pour vous connecter merci d'indiquez votre email et votre mot de passe. Si vous n'êtes pas encore membre adressez vous à un responsable.   <a href="{{ path('forgot_password') }}">Mot de passe oublié ?</a> </p>
+
+                        <form id="login" method="post" action="{{ path('app_login') }}">
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" required autofocus >
+
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Mot de Passe" required>
+                            </div>
+
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >
+
+                            <div class="text-center">
+                                <input type="submit" class="btn rdcBtn" value="Connexion"/>
+                            </div>
+                        </form>
+                    <div>
+
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="main-body" style="background-image: url({{ asset('rdcPlatform/public/img/cover.jpg') }});" >
+        {% block body %}
+        {% endblock %}
+        </div>
+  <footer class="text-center mt-5 pt-3">
+      <img src="{{ asset('img/engagements.png') }}">
+      <div class="footerRdc">RDC Nation Vendredi</div>
+      <span class="footerRdcElt2">© 2019   Site Bénévole</span>
+  </footer>
+
+
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+
+             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>

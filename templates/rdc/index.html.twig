@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+
+{% block body %}
+    {%  for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+<div class="pimg1">
+    <div class="ptext">
+        <span class="border">
+                    <div class="body">
+<div class="container-fluid">
+
+
+    <div class="row mt-5">
+
+
+        <div class=" offset-lg-1 col-lg-4 offset-sm-2 col-sm-8 offset-sm-2">
+            <div class="card" id="cardElt">
+                <h4 class="card-header card-title">Bienvenue sur l'espace Bénévole des Resto du Coeur de Nation</h4>
+                <div class="card-body">
+                    <p class="card-text">Ce site vous est dédié.</p>
+
+                    <p class="card-text" >Il vous permet de prendre connaissance des comptes rendus des précédentes distributions et de vous inscrire à celles à venir.</p>
+
+                    <p class="card-text">Positive ou négative, une réponse est attendu avant le mercredi soir afin d'organiser au mieux chaque distribution.</p>
+
+                    <a href="{{ path('distribution.index') }}" class="btn btn-succes rdcBtn mt-3 ml-2 ">Prochaine distrib'</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-sm-4 mt-5">
+            <div class="card " id="cardElt">
+                <div class="card-header card-title text-center">
+                    <h7>VALEURS<h7>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center">1. Respect et solidarité envers toutes les personnes démunies</p>
+                    <p class="card-text text-center">2. Bénévolat sans aucun profit direct ou indirect</p>
+                    <p class="card-text text-center">3. Engagement sur une responsabilité acceptée</p>
+                    <p class="card-text text-center">4. Convivialité, esprit d'équipe, rigueur dans l'action</p>
+                    <p class="card-text text-center">5. Indépendance complète à l'égard du politique et du religieux</p>
+                    <p class="card-text text-center pb-4">6. Adhésion aux directives nationales et départementales</p>
+                    <p class="text-right"><small class="text-muted">- d'après la charte</small></p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-sm-4 mt-5 ">
+            <div class="card" id="cardElt">
+                <div class="card-header card-title text-center">
+                    <h7>ENGAGEMENTS<h7>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Toutes les bonnes volontés et les savoir-faire sont utiles pour développer les diverses actions de l’association.</p>
+                    <p class="card-text">Sans vous, les distributions n'auraient pas lieux.</p>
+                    <p class="card-text pb-4">Alors un grand merci à toutes et à tous pour votre engagement ! </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-sm-4 mt-5 mb-5">
+            <div class="card" id="cardElt">
+                <div class="card-header card-title text-center">
+                    <h7>DONS<h7>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Afin notamment d'améliorer la qualité des repas de nos bénéficiaires et de remercier les boulangeries partenaires, une cagnotte est mise en place sur le site. </p>
+                    <p class="card-text">Un appel aux dons est réalisé de manière ponctuelle lors des débriefing.  </p>
+                    <p class="card-text pb-4">Sachez que cela nous permet d'acheter thé, chocolat, condiments et autres cadeaux pour
+                        les boulangeries 
+                        partenaires. </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row d-none d-xl-block">
+        <div class="offset-lg-1 col-lg-3 col-sm-12">
+        <a class="btn btn-succes rdcBtn" id="crBtn" href="{{ path('compteRendu.lastCR') }}"> Dernier compte rendu </a>
+        </div>
+    </div>
+
+        </span>
+    </div>
+</div>
+
+
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center" ><h1 class="titleNumbers">Quelques chiffres</h1></div></div>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center" ><p class="sourceNumbers">sources pour l'année 2018 : <a href="https://www.restosducoeur.org/chiffres-cles/" target="_blank">Site Officiel</a> </p></div>
+        </div>
+        <hr width="50%">
+        <div class="row mt-5">
+            <div class="offset-lg-2 col-lg-2 offset-sm-3 col-sm-3 mr-4" data-aos="fade-down" data-aos-duration="700" data-aos-delay="300">
+                <div class="rdcNumbers1">882 000</div>
+                <div class="rdcText">Personnes accueillies l'hiver</div>
+            </div>
+            <div class="col-lg-2 mr-4 col-sm-4 " data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+                <div class="rdcNumbers2">134,8 Millions</div>
+                <div class="rdcText">de repas distribués</div>
+            </div>
+            <div class="col-lg-2 offset-lg-0 mr-4 offset-sm-3 col-sm-3 mt-2" data-aos="fade-down" data-aos-duration="700" data-aos-delay="300">
+                <div class="rdcNumbers1" >85 000</div>
+                <div class="rdcText">Spectateurs des Rendez-vous au cinéma</div>
+            </div>
+            <div class="col-lg-2 mr-4 col-sm-4 mt-2" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+                <div class="rdcNumbers2">81 278 nuités</div>
+                <div class="rdcText">Personnes aidées</div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="section section-video mt-4" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500">
+
+    <div class=" offset-lg-2 col-lg-8 offset-lg-2">
+        <div class="jumbotron" id="jumboRdc">
+            <h7 class="display-4">34e campagne des Restos du Coeur </h7>
+            <hr class="my-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/uRncJYT3qOg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+
+{% endblock %}
+

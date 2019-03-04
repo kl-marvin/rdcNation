@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} - Compte Rendu{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="jumbotron">
+        <div class="">
+            <h1 class="display-4 crTitle">Compte rendu de la dernière Distribution</h1>
+            <p class="lead">le {{ cr.date|date('d-m-Y') }} par {{ cr.author }}</p>
+            <hr class="my-4">
+            <p class="lead mt-3 "> {{ cr.content[:1500]|raw }}<a class="CRtitle"
+                                                                 href="{{ path('compteRendu.show', {'id': cr.id}) }}">
+                    ...Lire la suite</a></p>
+        </div>
+    </div>
+
+
+
+
+    <div class="container">
+        <div class="cardCR">
+            <h2 class="mb-3 crTitle">Comptes rendu des semaines précédentes</h2>
+
+            <div class="row">
+                {% for last4 in last4 %}
+                    <div class="card  col-lg-3 col-md-3 col-sm-8 col-xs-8 mt-3" id="cardElt">
+                        <div class="card-body cardbodyCR">
+                            <div class="card-text">
+                                <h5> Compte rendu du {{ last4.date|date('d-m-Y') }} par {{ last4.author }}</h5>
+                                <hr>
+                                <p>{{ last4.stripContent[:300]|raw }}</p>
+                            </div>
+                        </div>
+                        <div class="offset-lg-9 offset-md-10 offset-xs-2"><a class="btn btn-secondary mb-3 rdcBtn "
+                                                                 href="{{ path('compteRendu.show', {'id': last4.id}) }}">Lire</a>
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

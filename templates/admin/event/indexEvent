@@ -1,0 +1,49 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{%  block title 'RDC Admin - Gérer les Distributions' %}
+
+{% block body %}
+<div class="sectionAdmin">
+
+
+    <div class="container mt-4">
+
+        {%  for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="CRtitle">Gérer les Distributions</h1>
+        <div class=" mb-2">
+            <a href="{{ path('admin.event.create') }}" class="btn rdcBtn">Créer une distribution</a>
+        </div>
+        <table class="table table striped">
+            <thead>
+                    <tr>
+                        <th>Date de la Distribution</th>
+                        <th>Responsable</th>
+                        <th>Actions</th>
+                    </tr>
+            </thead>
+            <tbody>
+                {% for last5 in last5 %}
+                <tr>
+                    <td>Vendredi {{ last5.date|date('d-m-Y') }}</td>
+                    <td>{{ last5.manager }}</td>
+                    <td>
+                        <a href="{{ path('admin.event.edit', {id: last5.id}) }}" class="btn btnGreyRdc mr-2">Editer</a>
+                        <form method="post" action="{{ path('admin.event.delete', {id: last5.id}) }}" style="display: inline-block;" onsubmit="return confirm('Attention vous êtes sur le point de supprimer une distribution. Cette action est définitive. Continuer ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btnDangerRdc">Supprimer</button>
+                        </form>
+
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

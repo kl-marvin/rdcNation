@@ -1,0 +1,56 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{%  block title 'RDC Admin - Gérer les Commentaires' %}
+
+{% block body %}
+    <div class="container mt-4">
+<div class="sectionAdmin">
+
+        {%  for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="CRtitle"">Gérer les Commentaires</h1>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th class="">Auteurs</th>
+                <th>Commentaires</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for comments in comments %}
+                <tr>
+                    <td>{{ comments.date|date('d-m-Y') }}</td>
+                    <td>{{ comments.author }}</td>
+                    <td>{{ comments.content[:85] }}...</td>
+                    <td>{% if comments.statut == 0 %}
+                            Affiché
+                        {% else %}
+                            Modéré
+                            {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin.comments.update', {id: comments.id}) }}" class="btn btnGreyRdc mr-2">Modérer</a>
+                        <a href="{{ path('admin.comments.putback', {id: comments.id}) }}" class="btn btnGreyRdc mr-2">Rétablir</a>
+                        <form method="post" action="{{ path('admin.comments.delete', {id: comments.id}) }}" style="display: inline-block;" onsubmit="return confirm('Attention vous êtes sur le point de supprimer un commentaire. Cette action est définitive. Continuer ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btnDangerRdc">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+
+    </div>
+    </div>
+{% endblock %}

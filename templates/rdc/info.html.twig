@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Rdc Nation - Infos
+{% endblock %}
+
+{% block body %}
+
+
+    <h1 class="display-4 text-center crTitle mt-5 ">L'équipe de responsables</h1>
+
+    <div class="container">
+        <div class=" row">
+            <div class="card col-lg-3 offset-lg-1 mt-3" id="cardElt">
+
+                <img class="card-img-top img-fluid" src="{{ asset('img/yonie.JPG') }}" alt="Card image cap" >
+                <div class="card-body">
+                    <h5 class="crTitle text-center p-3">YONIE</h5>
+                    <h3 class="card-text text-center">Responsable Adjoint</h3>
+                    <div class="mt-3">
+                        <p> Bio</p>
+                        <img src="{{ asset('img/phone-receiver.svg') }}" height="23px" class="">
+                        <span>06 95 69 36 53</span>
+                    </div>
+                    <div class="">
+                        <img src="{{ asset('img/mail.svg') }}" height="23px" class="">
+                        <span>rdc@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-lg-3 offset-lg-1 mt-3" id="cardElt">
+                <h5 class="card-title text-center p-3">MARINE</h5>
+                <img class="card-img-top img-fluid" src="{{ asset('img/marinne.JPG') }}" alt="Card image cap" height="290px">
+                <div class="card-body">
+                    <h3 class="card-text text-center">Responsable Adjointe</h3>
+                    <div class="mt-3">
+                        <p> Bénévole depuis maintenant 3 ans je suis également .... dans la vie.</p>
+                        <img src="{{ asset('img/phone-receiver.svg') }}" height="23px" class="">
+                        <span>07 60 72 07 02</span>
+                    </div>
+                    <div class="">
+                        <img src="{{ asset('img/mail.svg') }}" height="23px" class="">
+                        <span>c.monmail@mail.fr</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card offset-lg-1 col-lg-3 mt-3" id="cardElt">
+                <h5 class="card-title text-center p-3">MANU</h5>
+                <img class="card-img-top img-fluid" src="{{ asset('img/manu.JPG') }}" alt="Card image cap" height="290px">
+                <div class="card-body">
+                    <h4 class="card-text text-center">Responsable</h4>
+                    <div class="mt-3">
+                        <p> Bénévole depuis maintenant 3 ans je suis également .... dans la vie.</p>
+                        <img src="{{ asset('img/phone-receiver.svg') }}" height="23px" class="">
+                        <span>06 31 39 53 67</span>
+                    </div>
+                    <div class="">
+                        <img src="{{ asset('img/mail.svg') }}" height="23px" class="">
+                        <span>c.monmail@mail.fr</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-5 ml-5">
+            <div class="crTitle"><h3>Accès</h3></div>
+            <div class="mb-1">La Distribution se situe au 40 cours de Vincennes, Paris 12 ième</div>
+            <div class="">
+                <ul class="access">
+                    <li class="metro">Métro :</li>
+                    <li class="metro"><img src="{{ asset('img/metro/m1.png') }}" width="18" </li>
+                    <li class="metro"><img src="{{ asset('img/metro/m2.png') }}" width="18" </li>
+                    <li class="metro"><img src="{{ asset('img/metro/m3.png') }}" width="18" </li>
+                    <li class="metro"><img src="{{ asset('img/metro/m9.png') }}" width="18" </li>
+
+                </ul>
+                <ul class="access">
+                    <li class="metro">RER :</li>
+                    <li class="metro"><img src="{{ asset('img/metro/RER.png') }}" width="18" </li>
+                    <li class="metro"><img src="{{ asset('img/metro/RERA.png') }}" width="18"</li>
+                </ul>
+                <ul class="access">
+                    <li class="metro">Bus :</li>
+                    <li class="metro"><img src="{{ asset('img/metro/ratp.png') }}" width="38" </li>
+                    <li class="metro"><img src="{{ asset('img/metro/26.png') }}" width="18"</li>
+                    <li class="metro"><img src="{{ asset('img/metro/56.png') }}" width="18"</li>
+                    <li class="metro"><img src="{{ asset('img/metro/57.png') }}" width="18"</li>
+                    <li class="metro"><img src="{{ asset('img/metro/85.png') }}" width="18"</li>
+                    <li class="metro"><img src="{{ asset('img/metro/356.png') }}" width="25"</li>
+                </ul>
+                <div class=""><img src="{{ asset('img/metro/Plan.png') }}" width="700" class="map mt-2 img-fluid" ></div>
+            </div>
+
+
+        </div>
+        <div class="ml-5 col-lg-6 ">
+            <div><h3 class="crTitle"> La Distribution</h3></div>
+            <div>Le rdv bénévole est à 19h30 au 40 cours de Vincennes et non au métro (prévoir entre 5 à 10 min de marche pour s’y rendre).
+                L’installation du site débute à 19h45. La Distribution débute à 20h et se termine aux alentours de 21h30. S’ensuit un débriefing puis le rangement.</div><br>
+            <div>Un responsable et un adjoint sont présents sur le site à chaque distribution.
+                Il est possible déposer vos affaires à l’abri dans un camion fermé à clé pendant la distribution.
+                Le site est situé dans la rue, il faut donc penser à bien se couvrir en cas d’intempéries. </div><br>
+
+            <div><h3 class="crTitle"> Les Postes</h3></div>
+            <div>Pour se dérouler de manière optimale x bénévoles sont nécéssaires à chaque distribution. Pensez à vous inscrire avant le mercredi afin que les responsables
+            puissent s'organiser et demander un appel aide si nécéssaire.</div><br>
+            Les Postes :
+           <ul>
+               <li>Files d'attentes (3 bénévoles)</li>
+               <li>Plats Chauds (3 bénévoles) </li>
+               <li>Sachets (2 bénévoles) </li>
+               <li>Soupes (2 bénévoles)</li>
+               <li>Café (2 bénévoles)</li>
+               <li>Céréales (2 bénévoles)</li>
+               <li>Boulangerie (2 bénévoles)</li>
+               <li>Cinéma (1 bénévole)</li>
+           </ul>
+
+        </div>
+    </div>
+    <div class="row mt-5 ml-4">
+        <div class="col">
+            <div><h3 class="crTitle">Quelques liens</h3></div>
+            <ul>
+                <li class="someLink">
+                    <a href="https://www.restosducoeur.org/?prehome=off">Site officiel</a>
+                </li>
+                <li class="someLink">
+                    <a href="https://www.restosducoeur.org/devenir-benevole/">Devenir Bénévole</a>
+                </li>
+                <li class="someLink">
+                    <a href="https://www.mortsdelarue.org">Morts de la Rue</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div><h3 class="crTitle">Aller plus loin</h3></div>
+            <ul>
+                <li>
+                    <a href="https://www.lemonde.fr/les-decodeurs/article/2016/12/05/la-pauvrete-et-les-inegalites-ont-encore-augmente-en-france-en-2015_5043597_4355770.html"></a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    {% endblock %}
+
+
+

@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title 'RDC Admin - Détails utilisateur' %}
+
+{% block body %}
+    <div class="container mt-5 " style="height: 90vh">
+        <div class=""><h2 class="CRtitle mt-1 mr-2" style="display: inline-block">Détail  de l'utilisateur</h2> <a href="{{ path('admin.user.index') }}" class="btn rdcBtn">Retour</a></div>
+        <a href="{{ path('admin.user.edit', {id: user.id}) }}" class="btn btnDangerRdc mr-2">Modifier Rôle</a>
+        <form method="post" action="{{ path('admin.user.delete', {id: user.id}) }}" style="display: inline-block;" onsubmit="return confirm('Attention vous êtes sur le point de supprimer un utilisateur. Cette action est définitive. Continuer ?')">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btnDangerRdc">Supprimer</button>
+        </form>
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="col-lg-12">
+                    <h5 style="display: inline-block;">
+                        {{ user.firstName }}
+                        {{ user.name }}
+                    </h5>
+                </div>
+                <div class="">
+                    <div>{{ user.address }}</div>
+                    <span class="ml-1 mr-2">{{ user.postcode }}</span>
+                    <span>  {{ user.city }}</span>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                    <h6>Contact : </h6>
+                    <div class="mb-1"><img src="{{ asset('img/adminMail.svg') }}" width="25" class="mr-1"> {{ user.email }}</div>
+                    <div><img src="{{ asset('img/phoneamin.svg') }}" width="25" class="mr-1">  {{ user.phone }}</div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

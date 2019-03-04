@@ -1,0 +1,32 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title 'Editer une distribution' %}
+{% block body %}
+<div class="sectionAdmin">
+
+
+    <div class="container mt-4">
+        <h1>Editer une distribution</h1>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.date) }}</div>
+        <div class="col-md-4">{{ form_row(form.manager) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form_row(form.message) }}
+        </div>
+        <a href="{{ path('admin.event.index') }}" class="btn rdcBtn">Retour</a>
+        <div style="display: inline-block;">
+            <button class="btn rdcBtn ml-2">Editer</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+
+    </div>
+
+
+
+{% endblock %}

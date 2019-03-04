@@ -1,0 +1,93 @@
+.main-body{
+    min-height: 100vh;
+}
+
+
+/**
+** Navigation Bar
+*/
+.navRdc
+{
+    font-size: 25px;
+    color: rgb(80, 117, 159);
+    margin-top: 2em;
+
+}
+
+.link
+{
+    text-transform: uppercase;
+}
+
+.link:hover
+{
+    color: rgb(80, 117, 159) !important;
+}
+
+.navbar
+{
+    border-bottom: rgb(80, 117, 159)!important;
+    border-bottom-style: solid!important;
+    border-bottom-width: 8px!important;
+    border-top: rgb(80, 117, 159)!important;
+    border-top-style: solid!important;
+    border-top-width: 3px!important;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.rdcBtn
+{
+    background-color: #BCBABE;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.rdcBtn:hover
+{
+    background-color: darkgrey;
+    color: white;
+}
+
+
+/**
+** Modal
+*/
+
+.styleForm
+{
+    color: rgb(80, 117, 159);
+}
+
+.modalRDC
+{
+
+
+
+}
+
+.modalWindowRdc
+{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    margin-top:35%;
+
+}
+
+/**
+** Footer
+*/
+
+footer{
+    background-color: rgb(80, 117, 159);
+}
+
+.footerRdcElt2 {
+    color: white;
+    font-size: 1.4em;
+}
+
+.footerRdc {
+    color: black;
+}

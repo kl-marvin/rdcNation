@@ -1,0 +1,57 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title 'RDC Admin - Gérer les Comptes rendus' %}
+
+{% block body %}
+    <div class="sectionAdmin">
+        <div class="container mt-4">
+            {%  for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <h1 class="CRtitle">Gérer les utilisateurs</h1>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            {% if user.containsRole("ROLE_USER") %}
+                            Bénévole
+                            {% elseif user.containsRole("ROLE_ADMIN") %}
+                                <span style="color: #66B68B">Responsable</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('admin.user.show', {id: user.id}) }}" class="btn btnGreyRdc mr-2">Détails</a>
+                            <a href="{{ path('admin.user.edit', {id: user.id}) }}" class="btn btnGreyRdc mr-2">Modifier Rôle</a>
+                            <form method="post" action="{{ path('admin.user.delete', {id: user.id}) }}" style="display: inline-block;" onsubmit="return confirm('Attention vous êtes sur le point de supprimer un utilisateur. Cette action est définitive. Continuer ?')">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btnDangerRdc">Supprimer</button>
+                            </form>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

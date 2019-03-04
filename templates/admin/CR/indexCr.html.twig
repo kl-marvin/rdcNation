@@ -1,0 +1,50 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{%  block title 'RDC Admin - Gérer les Comptes rendus' %}
+
+{% block body %}
+    <div class="sectionAdmin">
+
+
+    <div class="container mt-4">
+
+        {%  for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h1 class="CRtitle">Gérer les Comptes rendus</h1>
+        <div class=" mb-2">
+            <a href="{{ path('admin.cr.create') }}" class="btn rdcBtn">Créer un compte rendu</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th class="">Auteur du Compte Rendu</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for last10 in last10 %}
+                <tr>
+                    <td>Vendredi {{ last10.date|date('d-m-Y') }}</td>
+                    <td>{{ last10.author }}</td>
+                    <td>
+                        <a href="{{ path('admin.cr.edit', {id: last10.id}) }}" class="btn btnGreyRdc mr-2">Editer</a>
+                        <form method="post" action="{{ path('admin.cr.delete', {id: last10.id}) }}" style="display: inline-block;" onsubmit="return confirm('Attention vous êtes sur le point de supprimer un compte rendu. Cette action est définitive. Continuer ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btnDangerRdc">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+    </div>
+    </div>
+{% endblock %}

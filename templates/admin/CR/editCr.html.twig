@@ -1,0 +1,42 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{%  block title 'Editer le compte rendu' %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1>Editer le compte rendu</h1>
+        {{ form_start(form) }}
+           <div class="row">
+               <div class="col-md-12">{{ form_row(form.content, {'id': 'editor'}) }}</div>
+           </div>
+            <div class="row">
+                <div class="col-md-4">{{ form_row(form.date) }}</div>
+                <div class="col-md-4">{{ form_row(form.author) }}</div>
+            </div>
+
+        <div>
+            <a href="{{ path('admin.cr.index') }}" class="btn rdcBtn">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Retour
+            </a>
+            <button class="btn rdcBtn">Editer</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script>
+        $(function(){
+            tinymce.init({
+                selector: '#editor'
+            });
+
+        });
+    </script>
+
+{% endblock %}
