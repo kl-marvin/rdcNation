@@ -26,6 +26,7 @@ class UserFixture extends Fixture
         $user->setEmail('user@rdc.fr');
         $user->setName('John');
         $user->setFirstName('Doe');
+        $user->setPhone('0732239088');
         $user->setPseudo('firstuser');
         $user->setRoles(['ROLE_USER']);
         $user->setPassword($this->encoder->encodePassword($user, 'user'));
@@ -34,6 +35,7 @@ class UserFixture extends Fixture
         $user = new User();
         $user->setEmail('admin@rdc.fr');
         $user->setName('admin');
+        $user->setPhone('0755676623');
         $user->setFirstName('super');
         $user->setPseudo('admin');
         $user->setRoles(['ROLE_ADMIN']);
