@@ -101,7 +101,6 @@ class SecurityController extends AbstractController
      */
     public function forgotPasswordAction(Request $request, UserRepository $userRepository)
     {
-
         $form = $this->createForm(ForgotPasswordType::class);
         $form->handleRequest($request);
 

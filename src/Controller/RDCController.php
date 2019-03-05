@@ -41,7 +41,6 @@ class RDCController extends Controller
     {
         $this->UserRepository = $userRepository;
         $this->em =$em;
-
     }
 
     /**

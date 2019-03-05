@@ -9,7 +9,7 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
         <div class="row mt-5">
-            <div class="card cardRDC  offset-lg-4 col-lg-4 pt-3 pb-5 ">
+            <div class="card cardRDC  offset-lg-4 col-lg-4 pt-3 pb-5 offset-md-2 col-md-8 offset-1 col-10 ">
                 <div class="card-body">
 
                     <div class=""><h3 class="text-center crTitle pb-1 pt-3">Pour accéder à l'espace Bénévoles merci de vous connecter.</h3></div>
@@ -25,7 +25,7 @@
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     </div>
                     <div class="">
-                        <button class="btn rdcBtn mt-4 offset-lg-4 col-lg-4  " type="submit">
+                        <button class="btn rdcBtn mt-4 offset-lg-3 col-lg-6 offset-md-4 col-md-4 offset-4 col-4  " type="submit">
                             Se Connecter
                         </button>
                     </div>

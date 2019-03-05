@@ -25,7 +25,7 @@
 
             <div class="row">
                 {% for last4 in last4 %}
-                    <div class="card  col-lg-3 col-md-3 col-sm-8 col-xs-8 mt-3" id="cardElt">
+                    <div class="card  col-lg-3 col-md-11 offset-lg-0 offset-md-0 offset-1 col-10  mt-3" id="cardElt">
                         <div class="card-body cardbodyCR">
                             <div class="card-text">
                                 <h5> Compte rendu du {{ last4.date|date('d-m-Y') }} par {{ last4.author }}</h5>
@@ -33,7 +33,7 @@
                                 <p>{{ last4.stripContent[:300]|raw }}</p>
                             </div>
                         </div>
-                        <div class="offset-lg-9 offset-md-10 offset-xs-2"><a class="btn btn-secondary mb-3 rdcBtn "
+                        <div class="offset-lg-9 offset-md-10 offset-2"><a class="btn btn-secondary mb-3 rdcBtn "
                                                                  href="{{ path('compteRendu.show', {'id': last4.id}) }}">Lire</a>
                         </div>
 
