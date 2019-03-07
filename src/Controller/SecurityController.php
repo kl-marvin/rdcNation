@@ -60,7 +60,7 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'user' => $this->getUser()]);
     }
 
     /**
@@ -101,27 +101,37 @@ class SecurityController extends AbstractController
      */
     public function forgotPasswordAction(Request $request, UserRepository $userRepository)
     {
+
         $form = $this->createForm(ForgotPasswordType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
             $user = $userRepository->findOneBy(['email' => $data['email']]);
-            $user->setToken(md5(random_bytes(10)));
-            $this->em->persist($user);
-            $this->em->flush();
-            $message = (new \Swift_Message('RDC Nation - Demande de nouveau mot de passe'))
-                ->setFrom('rdc@nation.com')
-                ->setTo($user->getEmail())
-                ->setBody(
+            if($user) {
+                $user->setToken(md5(random_bytes(10)));
+                $this->em->persist($user);
+                $this->em->flush();
+                $headers  = "MIME-Version: 1.0 \n";
+
+                $headers .= "Content-Transfer-Encoding: 8bit \n";
+
+                $headers .= "Content-type: text/html; charset=utf-8 \n";
+
+                $headers .= "From: Rdc Nation <"."no-reply@rdc.fr"."> \n";
+
+                $headers .= "Reply-To: ".$user->getEmail()." \n";
+
+                mail ($user->getEmail(),
+                    'RDC Nation - Demande de nouveau mot de passe',
                     $this->twig_Environment->render('email/resetPasswordEmail.html.twig',
-                        ['user' => $user]),
-                    'text/html'
-                );
-            $this->mailer->send($message);
-            $this->addFlash('success', 'Mail de réinitialisation de mot de passe envoyé.');
-            return $this->redirectToRoute('homepage');
-        }
+                        ['user' => $user]), $headers);
+                $this->addFlash('success', 'Mail de réinitialisation de mot de passe envoyé. Pensez à vérifier vos spam. ');
+                return $this->redirectToRoute('homepage');
+            }
+            else{
+                return $this->redirectToRoute('homepage');
+        }}
         return $this->render('security/forgotPassword.html.twig', [
             'form' => $form->createView(),
             'user' => $this->getUser()
