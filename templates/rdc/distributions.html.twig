@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="body">
-                <div class="text-center mt-2"><strong>Responsable(s) présent(es) cette semaine :</strong></div>
+                <div class="text-center mt-2"><strong>Responsable(s) présent(es) cette semaine </strong></div>
                 <div class="text-center">{{ lastDistribution.manager }}</div>
                 <div class="text-center mt-3">{{ lastDistribution.message }}</div>
                 <hr width="50%">
@@ -32,7 +32,7 @@
                             <h3 class="text-center ">Je serais là !</h3>
                             {% for presence in lastDistribution.presences %}
                                 {% if presence.response == true %}
-                                        <span class="response mr-1 mt-1">
+                                        <span class="response mt-1 ml-2">
                                             {{ presence.user.firstname }} {{ presence.user.name|slice(0, 1) }}. {{ presence.guest? "+ " ~ presence.guest : ""}} |
                                         </span>
                                 {% endif %}
@@ -41,7 +41,7 @@
                         <div class="col-lg-5"><h3 class="text-center">J'ai poney...</h3>
                             {% for presence in lastDistribution.presences %}
                                 {% if  presence.response == false %}
-                                    <span class="response offset-lg-1 mt-1">{{ presence.user.firstname }} {{ presence.user.name|striptags|slice(0, 1) }}.</span>
+                                    <span class="response ml-2 mt-1">{{ presence.user.firstname }} {{ presence.user.name|striptags|slice(0, 1) }}. |</span>
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="body p-3">
-                            <div class="text-center mt-2"><strong>Responsable(s) présent(es) cette semaine :</strong>
+                            <div class="text-center mt-2"><strong>Responsable(s) présent(es) cette semaine </strong>
                             </div>
                             <div class="text-center">{{ event.manager }}</div>
                             <div class="text-center mt-3">{{ event.message }}</div>

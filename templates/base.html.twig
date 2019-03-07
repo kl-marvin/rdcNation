@@ -25,18 +25,42 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link link" href="{{ path('distribution.index') }}"><img src="{{ asset('img/event.svg') }}" width="30"></a>
+                        <li class="nav-item ml-4 mr-1">
+                            <div class="row">
+                                <div><a class="nav-link link" href="{{ path('distribution.index') }}"><img src="{{ asset('img/event.svg') }}" width="31"></a></div>
+                            </div>
+                            <div class="row">
+                                <div style="font-family: Avenir; font-size: 12px; color: #50759f; margin-top: -8px; margin-left: 5px; "> Distrib'</div>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link link" href="{{ path('compteRendu.index') }}"><img src="{{ asset('img/cr.svg') }}" width="30"></a>
+                        <li class="nav-item ml-4">
+                            <div class="row">
+                                <div><a class="nav-link link" href="{{ path('compteRendu.index') }}"><img src="{{ asset('img/cr.svg') }}" width="30"></a></div>
+                            </div>
+                            <div class="row">
+                                <div style="font-family: Avenir; font-size: 12px; color: #50759f; margin-top: -8px; margin-left: 14px; "> CR</div>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link link" href="{{ path('homepage') }}"><img src="{{ asset('img/info.svg') }}" width="30"></a>
+                        <li class="nav-item ml-4">
+                            <div class="row">
+                                <div><a class="nav-link link" href="{{ path('homepage') }}"><img src="{{ asset('img/info.svg') }}" width="30"></a></div>
+                            </div>
+                            <div class="row">
+                                <div style="font-family: Avenir; font-size: 12px; color: #50759f; margin-top: -8px; margin-left: 10px; "> Infos</div>
+                            </div>
                         </li>
+                        <!-- Test -->
+
+
+
                         {% if(is_granted('ROLE_ADMIN')) %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('admin.index') }}"> <img src="{{ asset('img/admin.svg') }}" width="30"></a>
+                            <li class="nav-item ml-4">
+                                <div class="row">
+                                    <div><a class="nav-link link" href="{{ path('admin.index') }}"><img src="{{ asset('img/admin.svg') }}" width="30"></a></div>
+                                </div>
+                                <div class="row">
+                                    <div style="font-family: Avenir; font-size: 12px; color: #50759f; margin-top: -8px; margin-left: 10px; ">Admin</div>
+                                </div>
                             </li>
                         {% endif %}
                     </ul>
@@ -44,8 +68,14 @@
 
 
                     {% if (is_granted('IS_AUTHENTICATED_REMEMBERED')) %}
-
-                    <a  href="{{ path('profile.edit', {id: user.id}) }}" ><img src="{{ asset('img/user.svg') }}" width="35 " class="mr-1"></a>
+                        <li style="list-style-type: none;" class=" ml-2 mr-1 mt-1">
+                            <div class="row">
+                                <div><a class="nav-link link" href="{{ path('profile.edit', {id: user.id}) }}"><img src="{{ asset('img/user.svg') }}" width="32"></a></div>
+                            </div>
+                            <div class="row">
+                                <div style="font-family: Avenir; font-size: 12px; color: #50759f; margin-top: -8px; margin-left: 18px; ">Profil</div>
+                            </div>
+                        </li>
                         <a href="{{ path('app_logout') }}" class="btn rdcBtn">Se Déconnecter</a>
 
 

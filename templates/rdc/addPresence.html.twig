@@ -5,21 +5,21 @@
 {% block body %}
     <div class="container mt-5">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 offset-1 col-8">
                 <h4 class="crTitle">Inscription à la distribution</h4>
             </div>
             <div class="col-lg-12">
-                <p> Afin de pouvoir assurer l'organisation de la distribution, merci de vous inscrire de manière définitive après le mercredi.</p>
+                <p> Afin de pouvoir assurer l'organisation de la distribution, merci de vous inscrire de manière définitive avant le mercredi.</p>
             </div>
 
                 {{ form_start(form) }}
                 <div class="row">
-                    <div class=" offset-lg-2 col-lg-10">
+                    <div class=" offset-lg-2 col-lg-10 offset-1 col-10 offset-1">
                         {{ form_row(form.response) }}
                     </div>
-                    <div class="offset-lg-2 col-lg-10">
+                    <div class="offset-lg-2 col-lg-10 offset-1 col-10 offset-1">
                         {{ form_row(form.guest) }}
-                        <input type="submit" class="rdcBtn btn" value="OK">
+                        <input type="submit" class="rdcBtn btn offset-1 col-10 mt-2" value="OK">
                         {{ form_end(form) }}
                     </div>
             </div>

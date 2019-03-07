@@ -44,7 +44,7 @@ class UserRegistrationType extends AbstractType
                 'required' => true
             ])
             ->add('city', null, [
-                'label' => 'Vile',
+                'label' => 'Ville',
                 'required' => true
             ])
             ->add('postcode', null, [
